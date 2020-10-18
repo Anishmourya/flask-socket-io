@@ -1,0 +1,34 @@
+version: '3'
+services:
+  flask-socket-io:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    environment:
+      ENVIRONMENT: DEVELOPMENT
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ''
+      GUNICORN_WORKERS: 5
+      SECRET_KEY: 477fcd746521ea30f2940d8c0934bc950dd89b9f88f9b37300233fc7352b4637fc0dff5f6f3070904279e5a9fa963075b11a88825d66fc3e978de5b00123d2a3
+    ports:
+      - 5000:5000
+    expose:
+      - 5000
+    depends_on:
+      - redis
+    hostname: flask-socket-io
+    container_name: flask-socket-io
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    expose:
+      - 6379
+  httpd:
+    image: anishdhanka/httpd:latest
+    hostname: 0.0.0.0
+    ports:
+      - 8080:80
+    expose:
+      - 80

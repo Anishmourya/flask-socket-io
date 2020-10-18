@@ -1,0 +1,15 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket = io();
+    socket.on('connect', function() {
+         socket.emit("ping",function (){
+             console.log('ping....');
+         });
+         socket.on('pong', function() {
+             console.log('pong....');
+          socket.emit("ping");
+        });
+    });
+
+</script>
