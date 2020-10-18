@@ -22,3 +22,19 @@ $ pytest --cov
 ```
 $  python run.py
 ```
+
+# screenshots
+
+
+![Screenshot](Screenshot 2020-10-19 at 2.30.03 AM.png)
+
+# kubernetes Helm chart 
+Note:- need to set upgrade header in ELB  Load balancer Ingress rule
+```
+$ cd kubernetes && helm install . --name flask-socket-io --set SECRET_KEY='477fcd746521ea30f2940d8c0934bc95'
+
+```
+# Delete chart 
+```
+$ helm del --purge flask-socket-io;
+```
