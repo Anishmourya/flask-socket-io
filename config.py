@@ -16,7 +16,7 @@ class Config(object):
     REDIS_PASSWORD = os.getenv("REDIS_PASSWORD", "")
     REDIS_PORT = os.getenv("REDIS_PORT", "6379")
     REDIS_CONN = "redis://{}:{}@{}:{}".format(
-        "REDIS_USERNAME", REDIS_PASSWORD, REDIS_HOST, REDIS_PORT
+        REDIS_USERNAME, REDIS_PASSWORD, REDIS_HOST, REDIS_PORT
     )
 
 

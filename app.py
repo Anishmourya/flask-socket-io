@@ -1,8 +1,15 @@
+# monkey patch for gevent errors
+from gevent import monkey
+
+monkey.patch_all()
+
 from flask import Flask, render_template
 from flask_socketio import SocketIO
 from config import current_config
 import os
 from flask import render_template
+import logging
+import json
 
 
 def create_app():
@@ -22,8 +29,7 @@ def register_socket(app):
     socketio = SocketIO(app, **{"message_queue": str(app.config["REDIS_CONN"])})
 
     @socketio.on("ping")
-    def pong():
-        print("ping pong")
-        emit("pong", pong)
+    def ping():
+        emit("pong")
 
     return socketio
